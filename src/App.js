@@ -1,23 +1,15 @@
 /** @format */
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "./App.css";
-import app, { getAuth } from "./firebase.init";
-
-app;
+import { getAuth } from "./firebase/auth";
 const auth = getAuth();
 
 function App() {
-  const [user, setUser] = React.useState({});
-  const provider = new auth.GoogleAuthProvider();
-  
   const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-    .then(result => {
-      const user = result.user;
-      setUser(user);
-      console.log(user);
-  });
+    console.log("working");
+  };
   return (
     <div className='App'>
       <button onClick={handleGoogleSignIn}>Google Sign In</button>
