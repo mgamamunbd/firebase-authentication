@@ -1,68 +1,34 @@
 /** @format */
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import app from "./firebase.init";
-
-const auth = getAuth(app);
+import Header from "./Header/Header";
+import Home from "./Home/Home";
+import Login from "./Login/Login";
+import Orders from "./Orders/Orders";
+import Products from "./Products/Products";
+import Register from "./Register/Register";
+import RequireAuth from "./RequireAuth/RequireAuth";
 
 function App() {
-  const [user, setUser] = useState({});
-  const googleProvider = new GoogleAuthProvider();
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        // console.log(user);
-      })
-      .catch((error) => {
-        // console.error('error', error);
-      });
-  };
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        setUser({});
-      })
-      .catch((error) => {
-        setUser({});
-      });
-  };
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-  }, []);
   return (
-    <div className='App log-in-form mx-auto'>
-      <h1>Firebase Authentication</h1>
-      {user.uid ? (
-        <button className='btn btn-info' onclick={handleSignOut}>
-          Sign Out
-        </button>
-      ) : (
-        <>
-          <button className='btn btn-info' onClick={handleGoogleSignIn}>
-            Google Sign In
-          </button>
-        </>
-      )}
-      <h2>
-        Name: <span className='orange'>{user.displayName}</span>
-      </h2>
-      <p>
-        Email: <span className='orange'>{user.email}</span>
-      </p>
-      <img src={user.photoURL} alt='profile' />
+    <div className='App'>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/products' element={<Products />} />
+        <Route
+          path='/orders'
+          element={
+            <RequireAuth>
+              <Orders />
+            </RequireAuth>
+          }
+        />
+      </Routes>
     </div>
   );
 }

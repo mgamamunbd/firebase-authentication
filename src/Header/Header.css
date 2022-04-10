@@ -1,0 +1,11 @@
+/** @format */
+
+.header nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header nav a:hover {
+  color: #61dafb;
+}
