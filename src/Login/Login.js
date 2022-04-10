@@ -2,8 +2,8 @@
 
 import { getAuth } from "firebase/auth";
 import React from "react";
-import app from "../firebase.init";
-import { useSignInWithGoogle } from "../firebase/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import app from "../../src/firebase.init";
 
 const auth = getAuth(app);
 
@@ -18,7 +18,7 @@ const Login = () => {
       <form>
         <input type='email' placeholder='Email' />
         <input type='password' name='' id='' placeholder='Password' />
-        <input type='submit' value={"Login"} />
+        <input type='submit' value='Login' />
       </form>
     </div>
   );
