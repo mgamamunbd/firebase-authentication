@@ -9,13 +9,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #f2f2f2;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.log-in-form img {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.orange {
+  color: orange;
 }
 
 .App-logo {

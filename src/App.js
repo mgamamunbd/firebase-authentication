@@ -21,7 +21,7 @@ function App() {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => {
         // console.error('error', error);
@@ -37,7 +37,7 @@ function App() {
       });
   };
   return (
-    <div className='App log-in-form'>
+    <div className='App log-in-form mx-auto'>
       <h1>Firebase Authentication</h1>
       {user.uid ? (
         <button className='btn btn-info' onclick={handleSignOut}>
@@ -50,8 +50,12 @@ function App() {
           </button>
         </>
       )}
-      <h2>Name: {user.displayName}</h2>
-      <p>Email: {user.email}</p>
+      <h2>
+        Name: <span className='orange'>{user.displayName}</span>
+      </h2>
+      <p>
+        Email: <span className='orange'>{user.email}</span>
+      </p>
       <img src={user.photoURL} alt='profile' />
     </div>
   );
