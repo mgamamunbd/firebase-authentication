@@ -4,10 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import app from "./firebase.init";
 
@@ -36,6 +37,11 @@ function App() {
         setUser({});
       });
   };
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
   return (
     <div className='App log-in-form mx-auto'>
       <h1>Firebase Authentication</h1>
