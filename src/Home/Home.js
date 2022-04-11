@@ -9,9 +9,8 @@ const auth = getAuth(app);
 const Home = () => {
   const [user] = useAuthState(auth);
   return (
-    <div>
+    <div className='container'>
       <h1>Home</h1>
-      <p>Current User: {user ? user.displayName : "None"}</p>
     </div>
   );
 };

@@ -12,7 +12,6 @@ const Products = () => {
   return (
     <div>
       <h2>Welcome</h2>
-      <h5>{user ? user.displayName : "Voot"}</h5>
     </div>
   );
 };

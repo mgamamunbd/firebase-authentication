@@ -12,17 +12,27 @@ const auth = getAuth(app);
 const Header = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className='header'>
+    <div className='header p-5'>
       <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/products'>Products</Link>
-        <Link to='/orders'>Orders</Link>
-        <Link to='/register'>Register</Link>
+        <Link className='text-primary' to='/'>
+          Home
+        </Link>
+        <Link className='text-primary' to='/products'>
+          Products
+        </Link>
+        <Link className='text-primary' to='/orders'>
+          Orders
+        </Link>
+        <Link className='text-primary' to='/register'>
+          Register
+        </Link>
         <span>{user?.displayName && user.displayName}</span>
         {user?.uid ? (
           <button onClick={() => signOut(auth)}>Logout</button>
         ) : (
-          <Link to='/login'>Login</Link>
+          <Link className='text-primary' to='/login'>
+            Login
+          </Link>
         )}
       </nav>
     </div>
